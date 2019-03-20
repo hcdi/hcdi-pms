@@ -18,21 +18,21 @@
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/009.jpg" alt="">
+            <img class="rounded-circle" src="img/009.jpg" alt="" style="width:45%">
           </div>
         </div>
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
             <h3 class="display-5">{{this.name}}</h3>              
-            <p>{{this.personincharge}}</p>
-            <p>{{this.address1}}</p>
-            <p>{{this.address2}}</p>
-            <p>{{this.place}}</p>
-            <p>{{this.email}}</p>
-            <p>{{this.phone}}</p>
+            <p>{{this.personincharge}}
+            <br>{{this.address1}}
+            <br>{{this.address2}}
+            <br>{{this.place}}
+            <br>{{this.email}}
+            <br>{{this.phone}}</p>
             <!-- <a href="/projectSupport/update/{{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-5">Update</a> -->
-            <a href="/projectholder?psid={{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-5">Project Holders</a>
-            <a href="/projectSupport/delete/{{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-5">Delete</a>
+            <a href="/projectholder?psid={{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-1">Project Holders</a>
+            <a href="/projectSupport/delete/{{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-1">Delete</a>
           </div>
         </div>
       </div>
