@@ -6,7 +6,7 @@ var ph= require('../model/project-holder')
 
 router.get('/',async (req,res,next)=>{
 	if(req.query.psid){
-		ph.find({projectSupportId:req.query.psid}).sort({timeStamp: 'desc'}).select('_id name email address1').exec((err,ph)=>{
+		ph.find({projectSupportId:req.query.psid}).sort({timeStamp: 'desc'}).exec((err,ph)=>{
 			if(err){
 				res.send('error occured' + JSON.stringify(err))
 			}else{
@@ -24,7 +24,7 @@ router.post('/new',(req,res,next)=>{
 		console.log(JSON.stringify(body))
 		ph.create(body,function(err,projholder){
 			if(err){
-				res.send('error')
+				res.send('error' + JSON.stringify(err))
 			}else{
 				console.log('inserted data'+projholder)
 				res.redirect('/projectholder?psid='+body.projectSupportId)

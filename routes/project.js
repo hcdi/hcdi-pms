@@ -5,14 +5,23 @@ var project= require('../model/project')
 // let projcache = require('../lib/project')
 
 router.get('/',(req,res,next)=>{
-	if(req.query.action){
-		if(req.query.action == 'new'){
-			res.render('project-new', {phc:phcache.phCacheArray})
-		}else if(req.query.action == 'edit'){
+	// if(req.query.action){
+	// 	if(req.query.action == 'new'){
+	// 		res.render('project-new', {phc:phcache.phCacheArray})
+	// 	}else if(req.query.action == 'edit'){
 
-		}
-	}else{
-		res.render('project',{title:'project',project:projcache.prCacheArray})
+	// 	}
+	// }else{
+	// 	res.render('project',{title:'project',project:projcache.prCacheArray})
+	// }
+	if(req.query.phid){
+		project.find({projectHolderId:req.query.phid}).sort({timeStamp: 'desc'}).exec((err,pr)=>{
+			if(err){
+				res.send('error occured' + JSON.stringify(err))
+			}else{
+				res.render('project',{title:'project', phid:req.query.phid, project:pr})	
+			}
+		})		
 	}
 	
 })
@@ -27,9 +36,8 @@ router.post('/new',(req,res,next)=>{
 			if(err){
 				res.send(JSON.stringify(err))
 			}else{
-				projcache.updateProjectHolderCache()
 				console.log('inserted data'+proj)
-				res.redirect('/project')
+				res.redirect('/project?phid='+body.projectHolderId)
 			}
 		})
 	}

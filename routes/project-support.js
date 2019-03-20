@@ -10,7 +10,7 @@ router.get('/',async (req,res,next)=>{
 
 		}
 	}else{
-		ps.find({}).sort({timeStamp: 'desc'}).select('_id name place personincharge').exec((err,ps)=>{
+		ps.find({}).sort({timeStamp: 'desc'}).exec((err,ps)=>{
 			if(err){
 				res.send('error occured' + JSON.stringify(err))
 			}else{

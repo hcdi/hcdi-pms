@@ -1,5 +1,5 @@
 <!-- Page Heading -->
-<h1 class="my-4">Project 
+<!-- <h1 class="my-4">Project 
 <a href="/project?action=new" class="button default float-right"><img src="/images/baseline-add_circle-24px (1).svg"></a>
 </h1>
 <div class="row">       
@@ -19,5 +19,134 @@
       </div>
     </div>
 {{/each}}
-</div>
+</div> -->
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h2 class="masthead-subheading mb-0">Projects</h2>
+      <!-- <a href="" class="btn btn-primary btn-xl rounded-pill mt-5">Add New</a> -->
+      <button type="button" class="btn btn-primary btn-xl rounded-pill mt-5" data-toggle="modal" data-target="#myModal">
+      Add New
+      </button>
+      <!-- <a href="#projectsupport1" class="btn btn-primary btn-xl rounded-pill mt-5">View</a> -->
+    </div>
+  </div>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+</header>
 
+{{#each project }}
+    <section id="projectsupport1">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-lg-1">
+            <div class="p-5">
+              <img class="img-fluid rounded-circle" src="img/009.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+              <h3 class="display-5">{{this.name}}</h3>              
+              <p>{{this.location}}</p>
+              <p>{{this.projectDirector}}</p>
+              <p>{{this.address1}}</p>
+              <p>{{this.address2}}</p>
+              <!-- <a href="/projectSupport/update/{{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-5">Update</a> -->
+              <!-- <a href="/projectholder?psid={{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-5">Projects</a> -->
+              <a href="/projectSupport/delete/{{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-5">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+{{/each}}
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">New Project</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col-lg-12 portfolio-item">      
+               <form action="/project/new" method="Post">
+                  <div class="form-row">        
+                    <div class="form-group ">
+                      <input type="hidden" name="projectHolderId" value="{{phid}}" >
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="location">location</label>
+                      <input type="text" class="form-control" name="location" placeholder="location">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="projectDirector">Project Director</label>
+                      <input type="text" class="form-control" name="projectDirector" placeholder="Project Director">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="directorPhone">Director Phone</label>
+                      <input type="Phone" class="form-control" name="directorPhone" placeholder="Director Phone">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="directorEmail">Director Email</label>
+                      <input type="Email" class="form-control" name="directorEmail" placeholder="Director Email">
+                    </div>                  
+                    <div class="form-group  col-md-12">
+                      <label for="coordicator">Coordicator</label>
+                      <input type="text" class="form-control" name="coordicator" placeholder="Project Coordicator">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="coordicatorPhone">Coordicator Phone</label>
+                      <input type="Phone" class="form-control" name="coordicatorPhone" placeholder="Coordicator Phone">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="coordicatorEmail">Coordicator Email</label>
+                      <input type="Email" class="form-control" name="coordicatorEmail" placeholder="Coordicator Email">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="socialWorker">Social Worker</label>
+                      <input type="text" class="form-control" name="socialWorker" placeholder="Project social Worker">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="socialWorkerPhone">social Worker Phone</label>
+                      <input type="Phone" class="form-control" name="socialWorkerPhone" placeholder="social Worker Phone">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="socialWorkerEmail">social Worker Email</label>
+                      <input type="Email" class="form-control" name="socialWorkerEmail" placeholder="social Worker Email">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="address">Address</label>
+                      <input type="text" class="form-control" name="address1" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="quota">Quota</label>
+                      <input type="text" class="form-control" name="quota" placeholder="quota">
+                    </div>
+                    <div class="form-group  col-md-12">
+                      <label for="numberOfChildren">number Of Children</label>
+                      <input type="text" class="form-control" name="numberOfChildren" placeholder="number Of Children">
+                    </div>
+                    <div class="modal-footer  col-md-12">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
