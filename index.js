@@ -55,20 +55,20 @@ app.get('/logout', function (req, res) {
 });
 
 app.get('/', (req,res,next)=>{
-	res.render('index')
+	res.render('index',{user:req.session.user})
 })
 
-// app.use('/projectSupport', auth, require('./routes/project-support'))
+app.use('/projectSupport', auth, require('./routes/project-support'))
 
-// app.use('/projectholder', auth, require('./routes/project-holder'))
+app.use('/projectholder', auth, require('./routes/project-holder'))
 
-// app.use('/project', auth, require('./routes/project'))
+app.use('/project', auth, require('./routes/project'))
 
-app.use('/projectSupport',  require('./routes/project-support'))
+// app.use('/projectSupport',  require('./routes/project-support'))
 
-app.use('/projectholder',  require('./routes/project-holder'))
+// app.use('/projectholder',  require('./routes/project-holder'))
 
-app.use('/project',  require('./routes/project'))
+// app.use('/project',  require('./routes/project'))
 
 app.listen(3000)
 console.log('Server running on http://localhost:3000')

@@ -19,7 +19,7 @@ router.get('/',(req,res,next)=>{
 			if(err){
 				res.send('error occured' + JSON.stringify(err))
 			}else{
-				res.render('project',{title:'project', phid:req.query.phid, project:pr})	
+				res.render('project',{title:'project', phid:req.query.phid, project:pr, user:req.session.user})	
 			}
 		})		
 	}
