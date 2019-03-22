@@ -23,7 +23,17 @@ router.get('/',(req,res,next)=>{
 			}
 		})		
 	}
-	
+	else if(req.query.action && req.query.action == 'editform' && req.query.id){
+		//send edit form
+		project.findById(req.query.id, (err, pr) => {
+		    if(err){
+				res.send('error occured' + JSON.stringify(err))
+			}else{
+				console.log(JSON.stringify(pr))
+				res.render('project-edit',{title:'Edit Project Details', project:pr, user:req.session.user})	
+			}
+		});
+	}	
 })
 
 router.post('/new',(req,res,next)=>{
@@ -43,6 +53,12 @@ router.post('/new',(req,res,next)=>{
 	}
 })
 
-
+router.post('/edit/:id',(req,res,next)=>{
+	const id = req.params.id
+	const body = req.body	
+	project.findByIdAndUpdate(id, body, (err, response)=>{
+		res.redirect('/project?phid='+ body.projectHolderId + '#' + id)
+	})
+})
 
 module.exports = router

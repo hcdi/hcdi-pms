@@ -10,6 +10,7 @@ var ProjectSchema = new Schema({
   coordicator:String,
   coordicatorPhone:Number,
   coordicatorEmail:String,
+  address1:String,
   socialWorker:String,
   socialWorkerPhone:Number,
   socialWorkerEmail:String,

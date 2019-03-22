@@ -1,0 +1,86 @@
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h2 class="masthead-subheading mb-0">Edit Project</h2>
+      <p>Project Name: {{project.name}}</p>      
+    </div>
+  </div>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+</header>
+ {{#with project}}
+  <section>
+    <div class="container">
+      <div class="row align-items-center">      
+         <form action="/project/edit/{{this.id}}" method="Post">
+            <div class="form-row">       
+              <div class="form-group ">
+                <input type="hidden" id="projectHolderId" name="projectHolderId" value="{{{projectHolderId}}}" >
+              </div>
+              <div class="form-group col-md-12">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{{name}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="location">location</label>
+                <input type="text" id="location" class="form-control" name="location" placeholder="location" value="{{{location}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="projectDirector">Project Director</label>
+                <input type="text" id="projectDirector" class="form-control" name="projectDirector" placeholder="Project Director" value="{{{projectDirector}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="directorPhone">Director Phone</label>
+                <input type="Phone" id="directorPhone" class="form-control" name="directorPhone" placeholder="Director Phone" value="{{{directorPhone}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="directorEmail">Director Email</label>
+                <input type="Email" id="directorEmail" class="form-control" name="directorEmail" placeholder="Director Email" value="{{{directorEmail}}}">
+              </div>                  
+              <div class="form-group  col-md-12">
+                <label for="coordicator">Coordicator</label>
+                <input type="text" id="coordicator" class="form-control" name="coordicator" placeholder="Project Coordicator" value="{{{coordicator}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="coordicatorPhone">Coordicator Phone</label>
+                <input type="Phone" id="coordicatorPhone" class="form-control" name="coordicatorPhone" placeholder="Coordicator Phone" value="{{{coordicatorPhone}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="coordicatorEmail">Coordicator Email</label>
+                <input type="Email" id="coordicatorEmail" class="form-control" name="coordicatorEmail" placeholder="Coordicator Email" value="{{{coordicatorEmail}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="socialWorker">Social Worker</label>
+                <input type="text" id="socialWorker" class="form-control" name="socialWorker" placeholder="Project social Worker"value="{{{socialWorker}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="socialWorkerPhone">social Worker Phone</label>
+                <input type="Phone" id="socialWorkerPhone" class="form-control" name="socialWorkerPhone" placeholder="social Worker Phone" value="{{{socialWorkerPhone}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="socialWorkerEmail">social Worker Email</label>
+                <input type="Email" id="socialWorkerEmail" class="form-control" name="socialWorkerEmail" placeholder="social Worker Email" value="{{{socialWorkerEmail}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="address">Address</label>
+                <input type="text" id="address1" class="form-control" name="address1" placeholder="1234 Main St" value="{{{address1}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="quota">Quota</label>
+                <input type="text" id="quota" class="form-control" name="quota" placeholder="quota" value="{{{quota}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <label for="numberOfChildren">number Of Children</label>
+                <input type="text" id="numberOfChildren" class="form-control" name="numberOfChildren" placeholder="number Of Children" value="{{{numberOfChildren}}}">
+              </div>
+              <div class="form-group  col-md-12">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{{/with}}
