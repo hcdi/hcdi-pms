@@ -3,12 +3,16 @@ const router = express.Router()
 const ps= require('../model/project-support')
 
 router.get('/',async (req,res,next)=>{
-	if(req.query.action){
-		if(req.query.action == 'new'){
-			res.render('project-support-new')
-		}else if(req.query.action == 'edit'){
-
-		}
+	if(req.query.action && req.query.action == 'editform' && req.query.id){
+		//send edit form
+		ps.findById(req.query.id, (err, ps) => {
+		    if(err){
+				res.send('error occured' + JSON.stringify(err))
+			}else{
+				console.log(JSON.stringify(ps))
+				res.render('projectSupport-Edit',{title:'Edit Project Support', projectSupport:ps, user:req.session.user})	
+			}
+		});
 	}else{
 		ps.find({}).sort({timeStamp: 'desc'}).exec((err,ps)=>{
 			if(err){
@@ -48,6 +52,15 @@ router.get('/delete/:id',(req,res,next)=>{
 			res.redirect('/projectSupport')
 		}
 	});
+})
+
+router.post('/edit/:id',(req,res,next)=>{
+	const id = req.params.id
+	const body = req.body
+	body.user = req.session.user
+	ps.findByIdAndUpdate(id, body, (err, response)=>{
+		return res.redirect('/projectSupport' + '#' + id)
+	})
 })
 
 
