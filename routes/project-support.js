@@ -1,6 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const ps= require('../model/project-support')
+var multer  = require('multer')
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../hcdi-pms/public/img')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + '.jpg')
+  }
+})
+var upload = multer({ storage: storage })
 
 router.get('/',async (req,res,next)=>{
 	if(req.query.action && req.query.action == 'editform' && req.query.id){
@@ -25,9 +35,10 @@ router.get('/',async (req,res,next)=>{
 	}
 })
 
-router.post('/new',(req,res,next)=>{
+router.post('/new', upload.single('projectSupportImage'),(req,res,next)=>{
 	const body = req.body
 	body.user = req.session.user
+	body.image = req.file.filename
 	if(body !== null){
 		//save in db
 		console.log(JSON.stringify(body))
@@ -54,10 +65,11 @@ router.get('/delete/:id',(req,res,next)=>{
 	});
 })
 
-router.post('/edit/:id',(req,res,next)=>{
+router.post('/edit/:id', upload.single('projectSupportImage'),(req,res,next)=>{
 	const id = req.params.id
 	const body = req.body
 	body.user = req.session.user
+	body.image = req.file.filename
 	ps.findByIdAndUpdate(id, body, (err, response)=>{
 		return res.redirect('/projectSupport' + '#' + id)
 	})

@@ -1,7 +1,7 @@
 <header class="masthead text-center text-white">
   <div class="masthead-content">
     <div class="container">
-      <h2 class="masthead-subheading mb-0">Edit Project Support</h2>
+      <h1>Edit Project Support</h1>
       <p>Project Support Name: {{projectSupport.name}}</p>      
     </div>
   </div>
@@ -13,7 +13,7 @@
   <section>
     <div class="container">
       <br>
-      <form action="/projectSupport/edit/{{this.id}}" method="Post">
+      <form action="/projectSupport/edit/{{this.id}}" method="Post" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="name">Name</label>
@@ -47,6 +47,10 @@
             <label for="personincharge">Person In Charge</label>
             <input type="text" class="form-control" name="personincharge" placeholder="Person In Charge" value="{{{personincharge}}}">
           </div>
+        </div>
+        <div class="form-row">
+          <label for="personincharge">Image</label>
+          <input type="file" class="form-control" name="projectSupportImage" />
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">

@@ -8,6 +8,7 @@ var ProjectSupportSchema = new Schema({
   address2:String,
   phone:String,
   email:String,
+  image:String,
   timeStamp:{type:Date,default:Date.now},
   user:String
 })

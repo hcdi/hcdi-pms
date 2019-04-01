@@ -7,7 +7,7 @@ var ProjectHolderSchema = new Schema({
   address1:String,
   address2:String,
   phone:String,
-  email:String,
+  email:String,  
   timeStamp:{type:Date,default:Date.now},
   user:String
 })
