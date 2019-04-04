@@ -1,37 +1,10 @@
-<!-- Page Heading -->
-<!-- <h1 class="my-4">Project holder 
-<a href="/projectholder?action=new" class="button default float-right"><img src="/images/baseline-add_circle-24px (1).svg"></a>
-</h1>
-<div class="row">       
-{{#each projectholder }}
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <div class="card-body">
-          <h4 class="card-title">
-          <a href="/projectholder/projectSupport/{{this.id}}"> {{this.name}}</a>
-          </h4>
-          
-            <p class="card-text">{{this.place}} </p>
-            <small>
-              <p>{{this.address1}}</p>
-              <a href="/projectholder/update/{{this.id}}" class="btn btn-primary">Update</a>
-            </small>
-        </div>
-      </div>
-    </div>
-{{/each}}
-</div> -->
-
-<header class="masthead text-center text-white">
+<header class="masthead text-center text-white" id="proj-holder-head">
   <div class="masthead-content">
     <div class="container">
       <h1>Project Holders</h1>
-      <!-- <a href="" class="btn btn-primary btn-xl rounded-pill mt-5">Add New</a> -->
       <button type="button" class="btn btn-primary btn-md rounded-pill mt-1" data-toggle="modal" data-target="#myModal">
       Add New
       </button>
-      <!-- <a href="javascript:history.back()" class="btn btn-primary btn-xl rounded-pill mt-1">Go Back</a> -->
-      <!-- <a href="#projectsupport1" class="btn btn-primary btn-xl rounded-pill mt-5">View</a> -->
     </div>
   </div>
   <div class="bg-circle-1 bg-circle"></div>
@@ -40,12 +13,12 @@
 </header>
 
 {{#each projectholder }}
-  <section id="projectsupport1">
+  <section id="{{this.id}}">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <img class="rounded-circle" src="img/009.jpg" alt="" style="width:45%">
+            <img class="rounded-circle" src="img/{{this.image}}" alt="" style="width:60%">
           </div>
         </div>
         <div class="col-lg-6 order-lg-2">
@@ -55,8 +28,8 @@
             <br>{{this.phone}}
             <br>{{this.address1}}
             <br>{{this.address2}}</p>
-            <!-- <a href="/projectSupport/update/{{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-5">Update</a> -->
-            <a href="/project?phid={{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-1">Projects</a>
+            <a href="/project?phid={{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-1" >Projects</a>
+            <a href="/projectholder?action=editform&id={{this.id}}" onclick="return confirm('Are you sure you want to update this item?');" class="btn btn-primary btn-sm rounded-pill mt-1">Update</a>            
             <a href="/projectholder/delete/{{this.id}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary btn-sm rounded-pill mt-1">Delete</a>
           </div>
         </div>
@@ -81,10 +54,9 @@
       <div class="modal-body">
         <div class="row"> 
           <div class="col-lg-12 portfolio-item">      
-               <form action="/projectholder/new" method="Post">
+               <form action="/projectholder/new" method="Post" enctype="multipart/form-data">
                   <div class="form-row">        
                     <div class="form-group col-md-6">
-                      <!-- <label for="projectSupportId">project Support</label> -->
                       <input type="hidden" name="projectSupportId" value="{{psid}}" >
                     </div>
                     <div class="form-group col-md-12">
@@ -108,16 +80,10 @@
                     <label for="address2">Address 2</label>
                     <input type="text" class="form-control" name="address2" placeholder="Apartment, studio, or floor">
                   </div>
-                  <!-- <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="city">City</label>
-                      <input type="text" class="form-control" name="place" placeholder="City">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="personincharge">Person In Charge</label>
-                      <input type="text" class="form-control" name="personincharge" placeholder="Person In Charge">
-                    </div>
-                  </div> -->
+                  <div class="form-group">
+                    <label for="personincharge">Image</label>
+                    <input type="file" class="form-control" name="projectHolderImage" />
+                  </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Save</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

@@ -14,7 +14,6 @@ var upload = multer({ storage: storage })
 
 router.get('/',async (req,res,next)=>{
 	if(req.query.action && req.query.action == 'editform' && req.query.id){
-		//send edit form
 		ps.findById(req.query.id, (err, ps) => {
 		    if(err){
 				res.send('error occured' + JSON.stringify(err))
@@ -38,7 +37,9 @@ router.get('/',async (req,res,next)=>{
 router.post('/new', upload.single('projectSupportImage'),(req,res,next)=>{
 	const body = req.body
 	body.user = req.session.user
-	body.image = req.file.filename
+	if(req.file && req.file.filename){
+		body.image = req.file.filename
+	}
 	if(body !== null){
 		//save in db
 		console.log(JSON.stringify(body))
@@ -69,7 +70,9 @@ router.post('/edit/:id', upload.single('projectSupportImage'),(req,res,next)=>{
 	const id = req.params.id
 	const body = req.body
 	body.user = req.session.user
-	body.image = req.file.filename
+	if(req.file && req.file.filename){
+		body.image = req.file.filename
+	}
 	ps.findByIdAndUpdate(id, body, (err, response)=>{
 		return res.redirect('/projectSupport' + '#' + id)
 	})
