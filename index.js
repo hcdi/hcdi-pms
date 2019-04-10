@@ -6,6 +6,7 @@ const app = express()
 const session = require('express-session');
 var mongoose = require('mongoose');
 var db = mongoose.connect('mongodb://localhost/hcdi');
+const port = 3001
 
 app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout',layoutDir:__dirname + '/views/layouts/'}))
 app.set('views', path.join(__dirname, 'views'))
@@ -70,5 +71,5 @@ app.use('/project', auth, require('./routes/project'))
 
 // app.use('/project',  require('./routes/project'))
 
-app.listen(3000)
-console.log('Server running on http://localhost:3000')
+app.listen(port)
+console.log('Server running on http://localhost:'+port)
