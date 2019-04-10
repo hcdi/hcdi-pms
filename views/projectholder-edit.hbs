@@ -23,18 +23,8 @@
           <div class="form-group col-md-6">
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email" placeholder="Email" value="{{{email}}}">
-          </div>          
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="phone">Phone</label>
-            <input type="Phone" class="form-control" name="phone" placeholder="Phone" value="{{{phone}}}">
-          </div>          
-          <div class="form-group col-md-6">
-            <label for="personincharge">Person In Charge</label>
-            <input type="text" class="form-control" name="personincharge" placeholder="Person In Charge" value="{{{personincharge}}}">
-          </div>         
-        </div>
+          </div>                     
+        </div>    
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="address">Address 1</label>
@@ -45,6 +35,10 @@
             <input type="text" class="form-control" name="address2" placeholder="Apartment, studio, or floor" value="{{{address2}}}">
           </div>
           <div class="form-group col-md-6">
+            <label for="phone">Phone</label>
+            <input type="Phone" class="form-control" name="phone" placeholder="Phone" value="{{{phone}}}">
+          </div>
+          <div class="form-group col-md-6">
             <label for="personincharge">Image</label>
             <input type="file" class="form-control" name="projectHolderImage" />
           </div>
@@ -52,7 +46,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <button type="submit" class="btn btn-primary">Save</button>
-            <a href="/projectholder?psid={{this.projectSupportId}}" class="btn btn-danger">Cancel</a>
+            <a href="/projectholder?psid={{this.projectSupportId}}#{{this.id}}" class="btn btn-danger">Cancel</a>
           </div>
           <br><br><br><br>
         </div>

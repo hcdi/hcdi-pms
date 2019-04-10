@@ -13,7 +13,7 @@ app.set('view engine', 'hbs')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(session({secret: '2C44-4D44-WppQ38S'}));
+app.use(session({secret: '2C44-4D44-WppQ38S', resave: true, saveUninitialized: true}));
 
 const users = { 
 	'sachin': { password: 'sachin',admin:false }, 
