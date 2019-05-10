@@ -15,7 +15,8 @@ var ProjectSchema = new Schema({
   socialWorkerPhone:String,
   socialWorkerEmail:String,
   quota:Number,
-  numberOfChildren:Number,  
+  numberOfChildren:Number,
+  image:String, 
   timeStamp:{type:Date,default:Date.now},
   user:String
 })
