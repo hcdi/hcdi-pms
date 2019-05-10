@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 var model= require('../model/project-holder')
+var projSupportModel = require('../model/project-support')
 var multer  = require('multer')
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -43,9 +44,19 @@ router.post('/new', upload.single('projectHolderImage'),(req,res,next)=>{
 		//save in db
 		model.create(body,function(err,projholder){
 			if(err){
-				res.send('error' + JSON.stringify(err))
+				res.status(500).send('error' + JSON.stringify(err))
 			}else{
-				res.redirect('/projectholder?psid='+body.projectSupportId)
+				projSupportModel.update(
+					{_id:body.projectSupportId},
+					{$addToSet:{ProjectHolders:projholder._id}},
+					function(err,projSupport){
+						if(err){
+							res.status(500).send('error could not add item to project Support')
+						}else{
+							res.redirect('/projectholder?psid='+body.projectSupportId)
+						}
+				})
+				// res.redirect('/projectholder?psid='+body.projectSupportId)
 			}
 		})
 	}
@@ -66,5 +77,10 @@ router.post('/edit/:id', upload.single('projectHolderImage'),(req,res,next)=>{
 		}
 	})
 })
+
+// db.projectsupports.update(
+//     {_id : ObjectId("5ccabf1d1fec03154898b32f") },
+//     { $pull: { ProjectHolders: ObjectId("5ccabf551fec03154898b331") } }
+// )
 
 module.exports = router

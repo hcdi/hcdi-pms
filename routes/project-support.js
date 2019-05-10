@@ -23,11 +23,17 @@ router.get('/',async (req,res,next)=>{
 			}
 		});
 	}else{
-		ps.find({}).sort({timeStamp: 'desc'}).exec((err,ps)=>{
+		ps.find({}).sort({timeStamp: 'desc'}).populate("ProjectHolder").exec((err,ps)=>{
 			if(err){
 				res.send('error occured' + JSON.stringify(err))
 			}else{
-				res.render('project-support',{title:'project Support',projectSupport:ps, user:req.session.user})	
+				console.log(JSON.stringify(ps))
+				res.render('project-support',
+					{
+						title:'project Support',
+						projectSupport:ps, 
+						user:req.session.user
+					})	
 			}
 		})
 			

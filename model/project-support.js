@@ -10,6 +10,7 @@ var ProjectSupportSchema = new Schema({
   email:String,
   image:String,
   timeStamp:{type:Date,default:Date.now},
-  user:String
+  user:String,
+  ProjectHolders: [{ type: Schema.Types.ObjectId, ref: 'ProjectHolder' }]
 })
 module.exports = mongoose.model('ProjectSupport',ProjectSupportSchema)
