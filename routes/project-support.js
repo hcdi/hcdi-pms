@@ -19,7 +19,10 @@ router.get('/',async (req,res,next)=>{
 				res.send('error occured' + JSON.stringify(err))
 			}else{
 				console.log(JSON.stringify(ps))
-				res.render('projectSupport-Edit',{title:'Edit Project Support', projectSupport:ps, user:req.session.user})	
+				res.render('projectSupport-Edit',
+					{title:'Edit Project Support', 
+					projectSupport:ps, 
+					user:req.session.user})	
 			}
 		});
 	}else{

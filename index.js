@@ -5,7 +5,7 @@ const hbs = require('express-handlebars')
 const app = express()
 const session = require('express-session');
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/hcdi');
+var db = mongoose.connect('mongodb://localhost/hcdi',{useNewUrlParser:true});
 const port = 3001
 
 app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout',layoutDir:__dirname + '/views/layouts/'}))
