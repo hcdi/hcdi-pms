@@ -1,7 +1,7 @@
 <header class="masthead text-center text-white" id="proj-holder-head">
   <div class="masthead-content">
     <div class="container">
-      <h1>Project Holders</h1>
+      <h1>Project Holders of</h1> <h4> {{this.psname}}</h4>
       <button type="button" class="btn btn-primary btn-md rounded-pill mt-1" data-toggle="modal" data-target="#myModal">
       Add New
       </button>
@@ -28,7 +28,7 @@
             <br>{{this.phone}}
             <br>{{this.address1}}
             <br>{{this.address2}}</p>
-            <a href="/project?phid={{this.id}}" class="btn btn-primary btn-sm rounded-pill mt-1" >Projects</a>
+            <a href="/project?phid={{this.id}}&phname={{this.name}}" class="btn btn-primary btn-sm rounded-pill mt-1" >Projects</a>
             <a href="/projectholder?action=editform&id={{this.id}}" onclick="return confirm('Are you sure you want to update this item?');" class="btn btn-primary btn-sm rounded-pill mt-1">Update</a>            
             <a href="/projectholder/delete/{{this.id}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary btn-sm rounded-pill mt-1">Delete</a>
           </div>

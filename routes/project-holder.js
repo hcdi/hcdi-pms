@@ -28,7 +28,7 @@ router.get('/',async (req,res,next)=>{
 			if(err){
 				res.send('error occured' + JSON.stringify(err))
 			}else{
-				res.render('project-holder',{title:'project Holder', psid:req.query.psid, projectholder:ph, user:req.session.user})	
+				res.render('project-holder',{title:'project Holder', psid:req.query.psid, psname:req.query.psname, projectholder:ph, user:req.session.user})	
 			}
 		})		
 	}

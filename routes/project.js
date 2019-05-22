@@ -18,11 +18,11 @@ var upload = multer({ storage: storage })
 
 router.get('/',(req,res,next)=>{
 	if(req.query.phid){
-		model.find({projectHolderId:req.query.phid}).sort({timeStamp: 'desc'}).exec((err,pr)=>{
+		model.find({projectHolderId:req.query.phid}).sort({_id: 1}).exec((err,pr)=>{
 			if(err){
 				res.send('error occured' + JSON.stringify(err))
 			}else{
-				res.render('project',{title:'project', phid:req.query.phid, project:pr, user:req.session.user})	
+				res.render('project',{title:'project', phid:req.query.phid, phname:req.query.phname, project:pr, user:req.session.user})	
 			}
 		})		
 	}
