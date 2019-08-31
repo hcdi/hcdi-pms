@@ -29,7 +29,7 @@
             <br>{{this.address1}}
             <br>{{this.address2}}</p>
             <a href="/project?phid={{this.id}}&phname={{this.name}}" class="btn btn-primary btn-sm rounded-pill mt-1" >Projects</a>
-            <a href="/projectholder?action=editform&id={{this.id}}" onclick="return confirm('Are you sure you want to update this item?');" class="btn btn-primary btn-sm rounded-pill mt-1">Update</a>            
+            <a href="/projectholder?action=editform&id={{this.id}}&psname={{psname}}" onclick="return confirm('Are you sure you want to update this item?');" class="btn btn-primary btn-sm rounded-pill mt-1">Update</a>            
             <a href="/projectholder/delete/{{this.id}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary btn-sm rounded-pill mt-1">Delete</a>
           </div>
         </div>

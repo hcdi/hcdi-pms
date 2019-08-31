@@ -24,7 +24,7 @@ router.get('/',async (req,res,next)=>{
 			}
 		});
 	}else if(req.query.psid){
-		model.find({projectSupportId:req.query.psid}).sort({timeStamp: 'desc'}).exec((err,ph)=>{
+		model.find({projectSupportId:req.query.psid}).sort({_id: 1}).exec((err,ph)=>{
 			if(err){
 				res.send('error occured' + JSON.stringify(err))
 			}else{
